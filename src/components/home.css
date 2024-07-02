@@ -1,0 +1,49 @@
+.headerDown {
+    background-image: url('../assets/hero.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 112%;
+    color: white;
+}
+
+.doc-fact img{
+    width: 40%;
+}
+
+.circle {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5%;
+    background-color: #5A3FA4;
+    color: white;
+    padding: 3%;
+}
+
+.circle-1 {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 20px;
+    align-items: center;
+}
+
+.prices {
+    color: white;
+    margin-top: 5%;
+}
+
+.priceUnique {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #5A3FA4;
+    padding: 2%;
+    border-radius: 10%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.priceUnique p {
+    font-size: xx-large;
+    margin-top: 10px;
+}

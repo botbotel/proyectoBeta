@@ -1,0 +1,36 @@
+.container {
+    margin-top: 8%;
+    padding: 5%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;;
+}
+
+.inputs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5%;
+}
+
+.inputs input {
+    margin: 5%;
+    text-align: center;
+    padding: 5px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+button {
+    padding: 10px;
+    width: 100px;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+#register {
+    margin-top: 40%;
+    text-decoration: underline;
+    color: blueviolet;
+}

@@ -1,0 +1,39 @@
+.cartResume {
+    display: flex;
+    margin: 5% 10%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;    width: 20%;
+    justify-content: center;
+}
+
+.tableResume th{
+    padding: 30px;
+    text-align: center;
+}
+
+.CheckOut {
+    margin-right: 15%;
+}
+
+.CheckOut h3{
+    text-decoration: underline;
+}
+
+#checkOutBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5A3FA4;
+    color: white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    width: 80%;
+}
+
+#resumePrice {
+    font-size: xx-large;
+    font-weight: 700;
+}
+
+#cart {
+    width: 25px;
+    margin-left: 4px;
+}
