@@ -1,13 +1,12 @@
-import 'firebase/auth'
 import { useState } from 'react';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import firebase from 'firebase/compat/app'
 import appFirebase from '../firebase/firebaseConfig'
-import {onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-
+import { initializeApp } from 'firebase/app';
 
       {/* 
         TODO: REGISTRO CON AUTENTICACION FIREBASE 
         */ }
-
 
 const Register = () => {
 
@@ -16,19 +15,19 @@ const Register = () => {
 
   const submit = async (e) => {
     e.preventDefault()
-    const correo = e.target.email.value
-    const pass = e.target.password.value
-    setEmail(correo)
-    setPassword(pass)
-    console.log(email, password)
-  }
+    const auth = getAuth()
+    createUserWithEmailAndPassword(auth,email,password)
+    .then(() => {
+      alert('Regsitrado correctamente')
+    })
+  } 
 
   return (
     <div className=" container d-flex flex-column align-items-center justify-content-center">
       <h1>Sign in</h1>
       <div className="inputs">
-        <input placeholder="Email" id='email'/>
-        <input placeholder="Password" id='password'/>
+        <input placeholder="Email"value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
       <button onClick={submit}>Registrarse</button>
     </div>
