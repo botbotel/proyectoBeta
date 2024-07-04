@@ -1,12 +1,10 @@
-import 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from 'react';
+import firebase from 'firebase/compat/app'
 import appFirebase from '../firebase/firebaseConfig'
-import {onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-
-
-      {/* 
-        TODO: REGISTRO CON AUTENTICACION FIREBASE 
-        */ }
+import { initializeApp } from 'firebase/app';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 
 const Register = () => {
@@ -16,23 +14,31 @@ const Register = () => {
 
   const submit = async (e) => {
     e.preventDefault()
-    const correo = e.target.email.value
-    const pass = e.target.password.value
-    setEmail(correo)
-    setPassword(pass)
-    console.log(email, password)
+    const auth = getAuth()
+    createUserWithEmailAndPassword(auth,email,password)
+    .then(() => {
+      toast('🦄 Registrado correctamente', {position: "bottom-right", pauseOnHover: false});
+        setEmail("")
+        setPassword("")
+    }).catch((error) => {
+      toast('🦄 Email ya en uso', {position: "bottom-right", pauseOnHover: false});
+        setEmail("")
+        setPassword("")
+    })
   }
 
   return (
     <div className=" container d-flex flex-column align-items-center justify-content-center">
       <h1>Sign in</h1>
       <div className="inputs">
-        <input placeholder="Email" id='email'/>
-        <input placeholder="Password" id='password'/>
+      <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <input placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
       <button onClick={submit}>Registrarse</button>
+      <ToastContainer/>
     </div>
   );
+
 };
 
 export default Register;

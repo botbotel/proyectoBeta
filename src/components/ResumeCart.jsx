@@ -1,5 +1,8 @@
 import "../components/ResumeCart.css";
 import cart from '../assets/card.png'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+import { Bounce } from "react-toastify";
 
 
     {/* COMPONENTE RECIBE ARRAY DE @cartItems */ }
@@ -19,9 +22,9 @@ const ResumeCart = ({ cartItems }) => {
   const pay = () => {
     setTimeout(()=>{
       if(cartItems.length != 0) {
-        alert(`You paid ${resumePrice()}`)
+        toast(`🦄 Has pagado ${resumePrice()}€ it's MAGIC!!`, {position: "bottom-right", pauseOnHover: false});
       } else {
-        alert("No items yet")
+        toast(`🦄 Todavía no has añadido nada`, {position: "bottom-right", pauseOnHover: false});
       }
     },1000)
   }
@@ -60,6 +63,7 @@ const ResumeCart = ({ cartItems }) => {
         <button id="checkOutBtn" onClick={pay}> Pay 
           <img src={cart} id="cart" />
         </button>
+        <ToastContainer/>
       </div>
     </div>
   );
