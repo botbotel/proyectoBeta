@@ -8,6 +8,7 @@ import Register from './components/Register'
 import ResumeCart from './components/ResumeCart'
 import { Route, Routes, Link} from 'react-router-dom'
 import { useState } from 'react'
+import firebaseConfig from './firebase/firebaseConfig'
 
 
 
