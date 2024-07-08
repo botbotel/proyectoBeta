@@ -31,15 +31,15 @@ const Home = () => {
 
               {/* SECCIÓN 3 */ }
       <div className="circle">
-        <div className="circle-1 animate__animated animate__fadeInDown animate__delay-1s">
+        <div className="circle-1 animate__animated animate__fadeInDown animate__delay-1s lazy-load">
           <h2>100M</h2>
           <p>Lorem Ipsum</p>
         </div>
-        <div className="circle-1 animate__animated animate__fadeInDown animate__delay-1s">
+        <div className="circle-1 animate__animated animate__fadeInDown animate__delay-1s lazy-load">
           <h2>+1M</h2>
           <p>Lorem Ipsum</p>
         </div>
-        <div className="circle-1 animate__animated animate__fadeInDown animate__delay-1s">
+        <div className="circle-1 animate__animated animate__fadeInDown animate__delay-1s lazy-load">
           <h2>100%</h2>
           <p>Lorem Ipsum</p>
         </div>
@@ -48,15 +48,15 @@ const Home = () => {
 
       {/* SECCIÓN 4 */ }
       <div className="prices d-flex justify-content-around">
-        <div className="priceUnique animate__animated animate__fadeIn">
+        <div className="priceUnique animate__animated animate__fadeIn lazy-load">
           <h2>Lorem Ipsum</h2>
           <p>5.00€</p>
         </div>
-        <div className="priceUnique animate__animated animate__fadeIn animate__delay-1s">
+        <div className="priceUnique animate__animated animate__fadeIn animate__delay-1s lazy-load">
           <h2>Lorem Ipsum</h2>
           <p>15.00€</p>
         </div>
-        <div className="priceUnique  animate__animated animate__fadeIn animate__delay-2s">
+        <div className="priceUnique  animate__animated animate__fadeIn animate__delay-2s lazy-load">
           <h2>Lorem Ipsum</h2>
           <p>25.00€</p>
         </div>

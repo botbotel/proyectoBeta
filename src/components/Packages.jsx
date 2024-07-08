@@ -1,8 +1,14 @@
 import '../components/packages.css'
 import Package from './Package';
+import { Firestore, getFirestore } from 'firebase/firestore';
+import firebaseConfig from '../firebase/firebaseConfig';
 
 
-      {/* ARRAY DE PAQUETES */ }
+{/*  
+  TODO: TRAER COLECCION DE DATOS DESDE FIRESTORE 
+*/}
+
+      {/* ARRAY DE PAQUETES LOCAL*/ }
 const bundles = [
     {
         id:1,
@@ -24,7 +30,6 @@ const bundles = [
     },
 ]
 
-
 const Packages = ({addToCart}) => {
 
         {/* FUNCIÓN QUE PASA COMO PROP A @Package PARA SELECCIONAR CADA PAQUETE Y AÑADIR A @AddToCart  */ }
@@ -44,7 +49,7 @@ const Packages = ({addToCart}) => {
                             description={bundle.description}
                             price={bundle.price}
                             handleClick={()=> handleClick(bundle)}
-                    />        
+                    />     
                 </div>
                 )
             })}
