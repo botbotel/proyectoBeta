@@ -14,12 +14,11 @@ const Register = () => {
     const auth = getAuth()
     createUserWithEmailAndPassword(auth,email,password)
     .then(() => {
-
       toast('🦄 Registrado correctamente', {position: "bottom-right", pauseOnHover: false});
         setEmail("")
         setPassword("")
     }).catch((error) => {
-      toast('🦄 Email ya en uso', {position: "bottom-right", pauseOnHover: false});
+      toast(`🦄 Parece que ${email} ya está en uso`, {position: "bottom-right", pauseOnHover: false});
         setEmail("")
         setPassword("")
     })
@@ -29,7 +28,7 @@ const Register = () => {
     <div className=" container d-flex flex-column align-items-center justify-content-center">
       <h1>Sign in</h1>
       <div className="inputs">
-        <input placeholder="Email"value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <input placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
       <button onClick={submit}>Registrarse</button>
