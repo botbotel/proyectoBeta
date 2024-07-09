@@ -1,5 +1,5 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import { useId, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -21,12 +21,12 @@ const Login = () => {
       const user = userCredential.user;
       const tokenUID = await user.getIdToken();
 
-      console.log(tokenUID)
       sessionStorage.setItem('authToken', tokenUID)
 
       toast('🦄 Login correcto, EL PODER DEL PUTICORNIO ES TUYO', { position: "bottom-right", pauseOnHover: false });
       setEmail('');
       setPassword('');
+      location.reload()
     } catch (error) {
       toast(`🦄 Error en el login, revisalo todo`, { position: "bottom-right", pauseOnHover: false });
     }

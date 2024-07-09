@@ -8,6 +8,8 @@ import { Bounce } from "react-toastify";
     {/* COMPONENTE RECIBE ARRAY DE @cartItems */ }
 const ResumeCart = ({ cartItems }) => {
 
+  const token = sessionStorage.getItem('authToken')
+
 
   {/* @resumePrice MUESTRA EL TOTAL DE LA SUMA DE PRECIOS DEL CARRITO */ }
   const resumePrice = () => {
@@ -21,10 +23,11 @@ const ResumeCart = ({ cartItems }) => {
     */ }
   const pay = () => {
     setTimeout(()=>{
-      if(cartItems.length != 0) {
+      if(token) {
         toast(`🦄 Has pagado ${resumePrice()}€ it's MAGIC!!`, {position: "bottom-right", pauseOnHover: false});
       } else {
-        toast(`🦄 Todavía no has añadido nada`, {position: "bottom-right", pauseOnHover: false});
+        toast(`🦄 Logeate para terminar de comprar`, {position: "bottom-right", pauseOnHover: false});
+        this.props.history.push('/login')
       }
     },1000)
   }
