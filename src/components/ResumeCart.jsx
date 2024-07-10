@@ -1,75 +1,58 @@
-import "../components/ResumeCart.css";
-import cart from '../assets/card.png'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css';
-import { Bounce } from "react-toastify";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import ShoppingCart from './assets/icons8-carrito-de-compras-50.png';
+import Home from './components/Home';
+import Login from './components/Login';
+import Packages from './components/Packages';
+import Register from './components/Register';
+import ResumeCart from './components/ResumeCart';
+import { Route, Routes, Link } from 'react-router-dom';
+import { useState } from 'react';
+import firebaseConfig from './firebase/firebaseConfig';
 
+function App() {
+  const [cartItems, setCartItems] = useState([]);
 
-    {/* COMPONENTE RECIBE ARRAY DE @cartItems */ }
-const ResumeCart = ({ cartItems }) => {
+  // Nº Carrito
+  const cartCount = cartItems.length;
 
-  const token = sessionStorage.getItem('authToken')
+  // Add item to cart
+  const addToCart = (item) => {
+    setCartItems([...cartItems, item]);
+  };
 
-
-  {/* @resumePrice MUESTRA EL TOTAL DE LA SUMA DE PRECIOS DEL CARRITO */ }
-  const resumePrice = () => {
-    return cartItems.reduce((total, item) => total + item.price, 0).toFixed(2)
-  }
-
-  {/* 
-    @pay REALIZA LA SIMULACIÓN DE PASARELA DE PAGO
-    SI EL CARRITO TIENE ITEMS MUESTRA EL TOTAL EN UN ALERT 
-    EN CASO DE ESTAR VACÍO MUESTRA QUE NO HAY ITEMS
-    */ }
-  const pay = () => {
-    setTimeout(()=>{
-      if(token) {
-        toast(`🦄 Has pagado ${resumePrice()}€ it's MAGIC!!`, {position: "bottom-right", pauseOnHover: false});
-      } else {
-        toast(`🦄 Logeate para terminar de comprar`, {position: "bottom-right", pauseOnHover: false});
-        this.props.history.push('/login')
-      }
-    },1000)
-  }
+  // Remove item from cart
+  const removeFromCart = (index) => {
+    const newCartItems = cartItems.filter((_, i) => i !== index);
+    setCartItems(newCartItems);
+  };
 
   return (
-    <div className="d-flex justify-content-between align-items-center">
-
-
-      {/* TABLA RESUMEN CARRO */ }
-      <div className="cartResume">
-        <table className="tableResume"> 
-          <thead>
-            <tr className="tabHeader">
-              <th>Name</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cartItems.map((item, index) => (
-              <tr key={index}>
-                <th>{item.name}</th>
-                <th>{item.price}.00€</th>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-
-      {/* SECCIÓN RESUMEN 
-          TODO: PASARELA DE PAGO EN BOTON
-        */ }
-      <div className="CheckOut">
-        <h3>Check out</h3>
-        <p id="resumePrice">Resume price: {resumePrice()} €</p>
-        <button id="checkOutBtn" onClick={pay}> Pay 
-          <img src={cart} id="cart" />
-        </button>
-        <ToastContainer/>
-      </div>
-    </div>
+    <>
+      <header className='d-flex justify-content-between align-items-center p-4'>
+        <h1>LOGO</h1>
+        <nav>
+          <ul className='d-flex flex-row justify-content-around'>
+            <li className='p-4'><Link to="/home">Home</Link></li>
+            <li className='p-4'><Link to="/packages">Packages</Link></li>
+            <li className='p-4'><Link to="/login">Login</Link></li>
+            <li className='p-4'>
+              <Link to="/resumeCart">
+                <img src={ShoppingCart} alt="ShoppingCart" className='m-1'/>{cartCount}
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <Routes>
+        <Route path='/home' element={<Home/>}/>
+        <Route path='/packages' element={<Packages addToCart={addToCart}/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/resumeCart' element={<ResumeCart cartItems={cartItems} removeFromCart={removeFromCart}/>}/>
+        <Route path='/register' element={<Register/>}/>
+      </Routes>
+    </>
   );
-};
+}
 
-export default ResumeCart;
+export default App;
