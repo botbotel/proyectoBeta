@@ -19,6 +19,7 @@ function App() {
   const removeToken = () => {
     sessionStorage.removeItem('authToken')
     location.reload()
+    location.href = "/home"
   }
 
 

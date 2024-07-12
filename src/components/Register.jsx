@@ -13,6 +13,9 @@ const Register = () => {
     e.preventDefault()
     const auth = getAuth()
     createUserWithEmailAndPassword(auth,email,password)
+    const user = auth.currentUser
+
+    
     .then(() => {
       toast('🦄 Registrado correctamente', {position: "bottom-right", pauseOnHover: false});
         setEmail("")

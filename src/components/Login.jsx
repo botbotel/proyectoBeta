@@ -20,18 +20,21 @@ const Login = () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
-      updateProfile(user, {
-        displayName: `${user.email}`, photoURL: `${noPhoto}`
-      })
+
+      if(user.displayName === "") {
+        updateProfile(user, {
+          displayName: `${user.email}`, photoURL: `${noPhoto}`
+        })
+      }
+
       const tokenUID = await user.getIdToken();
-
       sessionStorage.setItem('authToken', tokenUID)
-
 
       toast('🦄 Login correcto, EL PODER DEL PUTICORNIO ES TUYO', { position: "bottom-right", pauseOnHover: false });
       setEmail('');
       setPassword('');
       setTimeout(()=> {location.reload()},5000)
+      
     } catch (error) {
       toast(`🦄 Error en el login, revisalo todo`, { position: "bottom-right", pauseOnHover: false });
     }
