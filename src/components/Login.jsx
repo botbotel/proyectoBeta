@@ -1,7 +1,8 @@
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword, updateCurrentUser, updateProfile } from 'firebase/auth'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
+import noPhoto from "../assets/Avatar-PNG-Image.png"
 import 'react-toastify/dist/ReactToastify.min.css';
 import './Login.css'
 import firebase from 'firebase/compat/app';
@@ -18,15 +19,19 @@ const Login = () => {
     const auth = getAuth()
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
+      const user = auth.currentUser;
+      updateProfile(user, {
+        displayName: `${user.email}`, photoURL: `${noPhoto}`
+      })
       const tokenUID = await user.getIdToken();
 
       sessionStorage.setItem('authToken', tokenUID)
 
+
       toast('🦄 Login correcto, EL PODER DEL PUTICORNIO ES TUYO', { position: "bottom-right", pauseOnHover: false });
       setEmail('');
       setPassword('');
-      location.reload()
+      setTimeout(()=> {location.reload()},5000)
     } catch (error) {
       toast(`🦄 Error en el login, revisalo todo`, { position: "bottom-right", pauseOnHover: false });
     }

@@ -9,8 +9,19 @@ import ResumeCart from './components/ResumeCart';
 import { Route, Routes, Link } from 'react-router-dom';
 import { useState } from 'react';
 import firebaseConfig from './firebase/firebaseConfig';
+import Dashboard from './components/Dashboard';
 
 function App() {
+
+  const token = sessionStorage.getItem('authToken') 
+
+  // Elimina el Token al hacer SingOut
+  const removeToken = () => {
+    sessionStorage.removeItem('authToken')
+    location.reload()
+  }
+
+
   const [cartItems, setCartItems] = useState([]);
 
   // Nº Carrito
@@ -36,6 +47,8 @@ function App() {
             <li className='p-4'><Link to="/home">Home</Link></li>
             <li className='p-4'><Link to="/packages">Packages</Link></li>
             <li className='p-4'><Link to="/login">Login</Link></li>
+            {token ? <li className='p-4'><Link to="/dashboard">Dashboard</Link></li>:""}
+            {token ? <li className='p-4' onClick={removeToken}> Sing Out </li>:""}
             <li className='p-4'>
               <Link to="/resumeCart">
                 <img src={ShoppingCart} alt="ShoppingCart" className='m-1'/>{cartCount}
@@ -50,6 +63,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/resumeCart' element={<ResumeCart cartItems={cartItems} removeFromCart={removeFromCart}/>}/>
         <Route path='/register' element={<Register/>}/>
+        <Route path='/dashboard' element={<Dashboard/>}/>
       </Routes>
     </>
   );
