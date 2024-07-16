@@ -21,12 +21,13 @@ const Login = () => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
 
-      if(user.displayName === "") {
+      //COMPRUEBA SI DISPLAYNAME ESTÁ VACIO E INSERTA EMAIL POR DEFECTO
+      if(user.displayName === null || user.photoURL === null) {
         updateProfile(user, {
-          displayName: `${user.email}`, photoURL: `${noPhoto}`
+          displayName: `${user.email}`, photoURL: {noPhoto}
         })
       }
-
+      
       const tokenUID = await user.getIdToken();
       sessionStorage.setItem('authToken', tokenUID)
 

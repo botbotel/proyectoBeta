@@ -1,8 +1,26 @@
 .namePanel {
     justify-content: center;
+    padding-bottom: 20px;
     color: grey;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 }
 
 img {
     width: 70px;
+}
+
+#deleteUser {
+    background: red;
+    width: auto;
+}
+
+#deleteContainer {
+    padding: 20px;
+    margin-top: 5%;
+}
+
+#horizontal {
+    color: gray;
+    width: 50%;
+    margin-left: 25%;
 }
