@@ -1,6 +1,5 @@
 import { ToastContainer, toast } from 'react-toastify';
-import cart from '../assets/card.png'
-import { Bounce } from "react-toastify";
+import StripePay from './StripePay';
 import deleteIcon from '../assets/icons8-delete-16.png';
 import "../components/ResumeCart.css";
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -24,12 +23,15 @@ const ResumeCart = ({ cartItems, removeFromCart }) => {
     */ }
   const pay = () => {
     setTimeout(()=>{
-      if(token) {
-        toast(`🦄 Has pagado ${resumePrice()}€ it's MAGIC!!`, {position: "bottom-right", pauseOnHover: false});
-      } else {
+      if(cartItems.length<1){
+        toast(`🦄 Sorry no hay nada en el carrito`, {position: "bottom-right", pauseOnHover: false});
+        this.props.history.push('/login')
+      }
+      else{
         toast(`🦄 Logeate para terminar de comprar`, {position: "bottom-right", pauseOnHover: false});
         this.props.history.push('/login')
       }
+       
     },1000)
   }
   return (
@@ -64,9 +66,7 @@ const ResumeCart = ({ cartItems, removeFromCart }) => {
       <div className="CheckOut">
         <h3>Check out</h3>
         <p id="resumePrice">Resume price: {resumePrice()} €</p>
-        <button id="checkOutBtn" onClick={pay}> Pay 
-          <img src={cart} id="cart" />
-        </button>
+        {token&& cartItems.length >0 ? <StripePay/> : pay()}
         <ToastContainer/>
       </div>
     </div>

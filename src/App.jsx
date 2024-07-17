@@ -10,6 +10,7 @@ import { Route, Routes, Link } from 'react-router-dom';
 import { useState } from 'react';
 import firebaseConfig from './firebase/firebaseConfig';
 import Dashboard from './components/Dashboard';
+import Success from './components/Success';
 
 function App() {
 
@@ -65,6 +66,7 @@ function App() {
         <Route path='/resumeCart' element={<ResumeCart cartItems={cartItems} removeFromCart={removeFromCart}/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/success' element={<Success/>}/>
       </Routes>
     </>
   );
