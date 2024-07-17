@@ -1,4 +1,5 @@
 import firebase from 'firebase/compat/app';
+import Calendario from './Calendario'
 import { getAuth, updateCurrentUser, updateProfile, updateEmail, verifyBeforeUpdateEmail, updatePassword } from 'firebase/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import { useState } from 'react';
@@ -95,6 +96,7 @@ const Dashboard = () => {
 
       
     <hr id='horizontal'/>
+
     </>
   )
 }
