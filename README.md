@@ -1,20 +1,43 @@
-# React + Vite
+# Product Prototype — React, Firebase & Stripe
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **Legacy project.** This repository is kept as part of my development history and is not one of my current featured projects.
 
-Currently, two official plugins are available:
+Experimental product prototype built with **React, Vite, Firebase and Stripe**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The project explores several end-to-end product flows:
 
-  
-  Instalar dependencias para poder utilizar Stripe ** 
-  ----------------------------------------------------
-  npm install express cors stripe
+- Firebase Authentication
+- registration and login
+- user dashboard
+- packages / catalogue views
+- shopping cart
+- Stripe PaymentIntent flow through a small Express server
+- calendar-oriented UI
+- client-side routing
 
-  npm install --save @stripe/react-stripe-js @stripe/stripe-js
+## Stack
 
+React · Vite · Firebase · React Router · Express · Stripe
 
-  Una vez instaladas
-  ------------------
-  Añadir node server.cjs adicionalmente al npm run dev
+## Local payment configuration
+
+The Stripe server reads its secret key from the environment:
+
+```bash
+STRIPE_SECRET_KEY=sk_test_your_own_key
+```
+
+Use your own test credentials and never commit secret keys.
+
+## Why this repository remains public
+
+This is an older learning/product prototype and does not represent the architecture or code quality of my current work.
+
+For a current engineering case study, see:
+
+**[MadrigueritApp Showcase](https://github.com/botbotel/madrigueritapp-showcase)**
+
+---
+
+**Alberto Botella Guirado**  
+Frontend / Product Engineer
